@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Lwjgl3Launcher",
+            "request": "launch",
+            "mainClass": "bme.oop.lwjgl3.Lwjgl3Launcher",
+            "projectName": "lwjgl3",
+            "preLaunchTask": "gradle-build"
+        }
+    ]
+}

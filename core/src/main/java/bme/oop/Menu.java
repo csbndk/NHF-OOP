@@ -38,7 +38,6 @@ public class Menu implements Screen {
     public void show() {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport(), batch);
-
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -74,29 +73,37 @@ public class Menu implements Screen {
         SelectBox<String> selectBox = new SelectBox<>(skin);
         selectBox.setItems("easy", "medium", "hard");
 
-        TextField textField = new TextField(null, skin);
+        TextField textField = new TextField("Size", skin);
 
         CheckBox checkBox = new CheckBox("Timer", skin);
 
         //Kattintásfigyelők
+        
         newGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 try {
-                    main.gotoGame();
-                    ((bme.oop.Game) main.game).setBoard(Integer.parseInt(textField.getText()), selectBox.getSelected());
-                    ((bme.oop.Game) main.game).setTimer(checkBox.isChecked());
+                    System.out.println("Hiba");
+                    int size = Integer.parseInt(textField.getText().trim());
+                    String difficulty = selectBox.getSelected();
+                    boolean timerEnabled = checkBox.isChecked();
+
+                    main.gotoGame(size, difficulty, timerEnabled);
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Hibás pályaméret! Számot adj meg.");
+                    e.printStackTrace();
                 } catch (Exception e) {
-                    // TODO: handle exception
-                } 
-                
+                    e.printStackTrace();
+                }
             }
         });
+
 
         loadGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                main.gotoLoad();
+                //main.gotoLoad();
             }
         });
 

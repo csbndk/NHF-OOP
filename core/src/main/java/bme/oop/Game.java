@@ -18,17 +18,13 @@ public class Game implements Screen {
     private int topBarHeight = 128;
     private Main main;
     private Display timer, counter;
-    private Boolean toTimer;
+    private Boolean timerEnabled=false;
 
-    public Game(bme.oop.Main main){
+
+    public Game(Main main, int size, String difficulty, boolean timer) {
         this.main = main;
-    }
-    public void setBoard(int size, String difficulty) {
         this.board = new Board(size, difficulty);
-
-    }
-    public void setTimer(Boolean timer) {
-        this.toTimer = timer;
+        this.timerEnabled = timer;
     }
 
     @Override
@@ -74,7 +70,7 @@ public class Game implements Screen {
                 }
             }
         }
-        if (toTimer)
+        if (timerEnabled)
             timer.draw(batch, (int)board.timer);
         counter.draw(batch, board.mineCount-board.flagsPlaced);
         batch.end();
