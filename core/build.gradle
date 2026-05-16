@@ -8,6 +8,7 @@ dependencies {
   api "com.github.crykn:libgdx-screenmanager:$screenManagerVersion"
   api "com.github.payne911:PieMenu:$pieMenuVersion"
   api "space.earlygrey:shapedrawer:$shapeDrawerVersion"
+  implementation 'com.google.code.gson:gson:2.10.1'
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
