@@ -4,9 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {

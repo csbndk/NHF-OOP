@@ -95,15 +95,26 @@ public class Board {
 
     private void revealAllMines() {
         for (Cell[] row : matrix) {
-            for (Cell c : row) if (c.isMine) c.isRevealed = true;
+            for (Cell c : row)
+                if (c.isMine)
+                    c.isRevealed = true;
         }
     }
 
-    private void checkWin() {
+    public void checkWin() {
         int revealedCount = 0;
+        int flaggedCount = 0;
         for (Cell[] row : matrix) {
-            for (Cell c : row) if (c.isRevealed) revealedCount++;
+            for (Cell c : row) {
+                if (c.isRevealed) {
+                    revealedCount++;
+                }
+                if (c.isMine && c.isFlagged) {
+                    flaggedCount++;
+                }
+            }
         }
-        if (revealedCount == (size * size) - mineCount) isWon = true;
+        if ((revealedCount == (size * size) - mineCount) && (flaggedCount == mineCount))
+            isWon = true;
     }
 }
