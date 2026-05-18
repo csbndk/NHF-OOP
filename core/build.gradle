@@ -9,6 +9,8 @@ dependencies {
   api "com.github.payne911:PieMenu:$pieMenuVersion"
   api "space.earlygrey:shapedrawer:$shapeDrawerVersion"
   implementation 'com.google.code.gson:gson:2.10.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
@@ -17,4 +19,11 @@ dependencies {
 
 jar {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
